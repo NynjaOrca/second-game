@@ -8,6 +8,8 @@ import java.util.LinkedList;
 
 import com.nynjaorca.second.framework.GameObject;
 import com.nynjaorca.second.framework.ObjectId;
+import com.nynjaorca.second.framework.Texture;
+import com.nynjaorca.second.window.Game;
 import com.nynjaorca.second.window.Handler;
 
 public class Player extends GameObject {
@@ -17,6 +19,8 @@ public class Player extends GameObject {
 	private final float MAX_SPEED = 20;
 	
 	private Handler handler;
+	
+	Texture tex = Game.getInstance();
 
 	public Player(float x, float y, Handler handler, ObjectId id) {
 		super(x, y, id);

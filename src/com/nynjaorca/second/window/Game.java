@@ -10,6 +10,7 @@ import java.awt.image.BufferedImage;
 import com.nynjaorca.second.framework.GameObject;
 import com.nynjaorca.second.framework.KeyInput;
 import com.nynjaorca.second.framework.ObjectId;
+import com.nynjaorca.second.framework.Texture;
 import com.nynjaorca.second.objects.Block;
 import com.nynjaorca.second.objects.Player;
 
@@ -25,11 +26,14 @@ public class Game extends Canvas implements Runnable {
 	//OBJECT
 	Handler handler;
 	Camera cam;
+	static Texture tex;
 	
 	private void init() {
 		
 		WIDTH = getWidth();
 		HEIGHT = getHeight();
+		
+		tex = new Texture();
 		
 		BufferedImageLoader loader = new BufferedImageLoader();
 		level = loader.loadImage("/level1.png"); //LOADING THE LEVEL
@@ -146,13 +150,19 @@ public class Game extends Canvas implements Runnable {
 				int green = (pixel >> 8) & 0xff;
 				int blue = (pixel) & 0xff;
 				
-				if(red == 255 && green == 255 && blue == 255) handler.addObject(new Block(xx*32, yy*32, ObjectId.Block));
+				if(red == 130 && green == 201 && blue == 201) handler.addObject(new Block(xx*32, yy*32, 0, ObjectId.Block));
+				if(red == 76 && green == 97 && blue == 111) handler.addObject(new Block(xx*32, yy*32, 1, ObjectId.Block));
+				if(red == 117 && green == 134 && blue == 144) handler.addObject(new Block(xx*32, yy*32, 2, ObjectId.Block));
 				if(red == 0 && green == 0 && blue == 255) handler.addObject(new Player(xx*32, yy*32, handler, ObjectId.Player));
 
 				
 				
 			}
 		}
+	}
+	
+	public static Texture getInstance() {
+		return tex;
 	}
 	
 	public static void main(String args[]) {
